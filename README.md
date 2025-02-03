@@ -1,5 +1,3 @@
-# EmbarcaTech Tarefa Aula Sincrona 27/01/2025
-
 
 <img width=100% src="https://capsule-render.vercel.app/api?type=waving&color=A6A6A6&height=120&section=header"/>
 <h1 align="center">Embarcatec | Tarefa Aula Sincrona 27/01/2025</h1>
