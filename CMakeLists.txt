@@ -44,7 +44,7 @@ pico_set_program_version(pio_matrix "0.1")
 pico_enable_stdio_uart(pio_matrix 0)
 pico_enable_stdio_usb(pio_matrix 1)
 
-pico_generate_pio_header(pio_matrix ${CMAKE_CURRENT_LIST_DIR}/pio_matrix.pio)
+#pico_generate_pio_header(pio_matrix ${CMAKE_CURRENT_LIST_DIR}/pio_matrix.pio)
 
 target_sources(pio_matrix PRIVATE pio_matrix.c)
 

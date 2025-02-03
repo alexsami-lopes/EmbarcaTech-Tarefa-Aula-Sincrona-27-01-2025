@@ -84,36 +84,7 @@ static void gpio_irq_handler(uint gpio, uint32_t events){
 }*/
 
 
-// Função para lidar com a interrupção de ambos os botões
-void gpio_irq_handler(uint gpio, uint32_t events) {
 
-    // Obtém o tempo atual em microssegundos
-    uint32_t current_time = to_us_since_boot(get_absolute_time());
-    printf("A = %d\n", a);
-    // Verifica se passou tempo suficiente desde o último evento
-    if (current_time - last_time > 200000) // 200 ms de debouncing
-    {
-        last_time = current_time; // Atualiza o tempo do último evento
-        if (gpio == 5) {  // Verifica se o botão A foi pressionado
-          if(a < 9) {
-            a++;  // incrementa a variavel de verificação
-          }else {
-            a = 0;
-          }
-        }
-        if (gpio == 6) {  // Verifica se o botão B foi pressionado
-          if(a > 0) {
-            a--;  // incrementa a variavel de verificação
-          }else {
-            a = 9;
-          }
-        }        
-
-        exibir_animacao_digito(a, pio, sm);
-                                           
-    }
-
-}
 
 static double frames_digitos[10][FRAME_SIZE][3] = {
 // Frame 0
@@ -199,6 +170,37 @@ void exibir_animacao_digito(uint digito, PIO pio, uint sm) {
     }
         
     
+}
+
+// Função para lidar com a interrupção de ambos os botões
+void gpio_irq_handler(uint gpio, uint32_t events) {
+
+    // Obtém o tempo atual em microssegundos
+    uint32_t current_time = to_us_since_boot(get_absolute_time());
+    printf("A = %d\n", a);
+    // Verifica se passou tempo suficiente desde o último evento
+    if (current_time - last_time > 200000) // 200 ms de debouncing
+    {
+        last_time = current_time; // Atualiza o tempo do último evento
+        if (gpio == 5) {  // Verifica se o botão A foi pressionado
+          if(a < 9) {
+            a++;  // incrementa a variavel de verificação
+          }else {
+            a = 0;
+          }
+        }
+        if (gpio == 6) {  // Verifica se o botão B foi pressionado
+          if(a > 0) {
+            a--;  // incrementa a variavel de verificação
+          }else {
+            a = 9;
+          }
+        }        
+
+        exibir_animacao_digito(a, pio, sm);
+                                           
+    }
+
 }
 
 //função principal
